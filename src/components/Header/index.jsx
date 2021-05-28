@@ -7,11 +7,7 @@ import {
   Container, Wrapper, Cart, InputWrapper,
 } from './styles';
 
-const Header = (props) => {
-
-  function handleSearchPokemon(event){
-
-  }
+const Header = ({setSearch}) => {
 
   return (
 
@@ -26,7 +22,7 @@ const Header = (props) => {
           <input 
             type="text"
             placeholder="Digite aqui um Pokemon"
-            onChange={(event)=> handleSearchPokemon(event)}
+            onChange={ (e) => setSearch(e.target.value)}
           />
           <button type="button">
             <MdSearch size={18} color="#FFF" />

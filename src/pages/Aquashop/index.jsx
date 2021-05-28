@@ -2,10 +2,10 @@ import {useState, useEffect} from 'react'
 import { Layout } from '../../components/Layout';
 import {api} from '../../services/api'
 
-const AquaShop = () => {
+export default function AquaShop() {
 
   const storeType = 'water'
-  const [pokemon, setPokemon] = useState([])
+  /* const [pokemon, setPokemon] = useState([])
 
 
   useEffect( () => {
@@ -28,19 +28,19 @@ const AquaShop = () => {
       })
 
       setPokemon(pokemonList)
+
      }
 
-     loadProducts();
+      loadProducts();
   },[])
 
-
+ */
   return (
 
     <>
-      <Layout pokemon={pokemon} />
+      <Layout storeType={storeType} />
     </>
 
   );
 };
 
-export default AquaShop;
