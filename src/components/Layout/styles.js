@@ -15,6 +15,7 @@ export const ContentWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin: 2rem auto;
+ 
 `;
 
 export const ProductList = styled.div`
@@ -22,6 +23,7 @@ export const ProductList = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   list-style: none;
+
 
   li {
     display: flex;

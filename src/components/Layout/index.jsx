@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import Header from '../Header';
 import { PokeCard } from '../PokeCard';
+import { SideCart } from '../SideCart';
 import { Container, ContentWrapper, ProductList } from './styles';
 import {api} from '../../services/api'
 
@@ -11,7 +12,7 @@ export function Layout({storeType})  {
   const [filteredPokemon, setFilteredPokemon] = useState([])
 
   const [catalogPokemon, setCatalogPokemon] = useState(() => {
-    const storagedCart = localStorage.getItem('@Pokeplace:list')
+    const storagedCart = localStorage.getItem(`@Pokeplace: list`)
 
     if (storagedCart) {
       return JSON.parse(storagedCart);
@@ -73,9 +74,10 @@ export function Layout({storeType})  {
                 </li>
               )
             }) }
-         
+          
             
           </ProductList>
+          <SideCart />
         </ContentWrapper>
       </Container>
     </>

@@ -24,9 +24,8 @@ const Header = ({setSearch}) => {
             placeholder="Digite aqui um Pokemon"
             onChange={ (e) => setSearch(e.target.value)}
           />
-          <button type="button">
-            <MdSearch size={18} color="#FFF" />
-          </button>
+          <MdSearch size={32} color="#ccc" />
+
         </InputWrapper>
 
         <Cart to="/cart">

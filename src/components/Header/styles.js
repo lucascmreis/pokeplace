@@ -35,6 +35,23 @@ export const Wrapper = styled.div`
 
 export const InputWrapper = styled.div`
   display: flex;
+  flex: 1;
+  margin: 0 5rem;
+  align-items: center;
+
+  
+
+  input{
+    border: 0;
+    border-bottom: 1px solid black;
+    width: 100%;
+    padding: 0 20px;
+    height: 50px;
+    margin-right: 1rem;
+    border-radius: 5px;
+  }
+
+
 `;
 
 export const Cart = styled(Link)`

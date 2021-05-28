@@ -5,10 +5,8 @@ import Routes from './routes'
 function App() {
   return (
     <BrowserRouter>
-
       <GlobalStyle />
       <Routes /> 
-
     </BrowserRouter>
   );
 }
