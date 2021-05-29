@@ -1,19 +1,22 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+
 
 export const Container = styled.header`
-
   background: var(--header-background);
+
 
 `;
 
 export const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  justify-items: center;
   align-items: center;
   max-width: 1024px;
   margin: 0 auto;
   padding: 1rem 2rem 3rem ;
+
+
 
   a {
     display: flex;
@@ -30,6 +33,17 @@ export const Wrapper = styled.div`
     }
   }
 
+  div{
+    display: flex;
+  }
+
+  @media screen and (max-width:768px){
+      grid-template-columns: 1fr;
+
+      a{
+        margin-bottom: 2rem;
+      }
+  }
 
 `;
 
@@ -38,6 +52,7 @@ export const InputWrapper = styled.div`
   flex: 1;
   margin: 0 5rem;
   align-items: center;
+ 
 
   
 
@@ -54,10 +69,11 @@ export const InputWrapper = styled.div`
 
 `;
 
-export const Cart = styled(Link)`
+export const Cart = styled.div`
   display: flex;
   align-items: center;
   text-decoration: none;
+  cursor: pointer;
 
   div {
     text-align: right;
@@ -66,6 +82,11 @@ export const Cart = styled(Link)`
     strong {
       display: block;
       color: #fff;
+
+      @media screen and (max-width:768px){
+      display:none;
+    
+      }
     }
 
     span {
@@ -73,4 +94,6 @@ export const Cart = styled(Link)`
       color: #999;
     }
   }
+
+
 `;

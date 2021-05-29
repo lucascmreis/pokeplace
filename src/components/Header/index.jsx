@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
 import { MdShoppingBasket, MdSearch } from 'react-icons/md';
-
+import { useCart } from '../../hooks/useCart';
 import waterLogo from '../../assets/water.png';
 
 import {
   Container, Wrapper, Cart, InputWrapper,
 } from './styles';
 
-const Header = ({setSearch}) => {
+const Header = ({setSearch, toggle}) => {
+  const {cart} = useCart();
+  const cartSize = cart.length;
 
   return (
 
@@ -18,6 +20,7 @@ const Header = ({setSearch}) => {
           <h1>AquaShop</h1>
         </Link>
 
+        <div>
         <InputWrapper>
           <input 
             type="text"
@@ -28,15 +31,17 @@ const Header = ({setSearch}) => {
 
         </InputWrapper>
 
-        <Cart to="/cart">
+        <Cart onClick={toggle}>
           <div>
             <strong>Meu carrinho</strong>
             <span >
-  
+              {cartSize === 1 ? `${cartSize} item` : `${cartSize} itens`}
             </span>
           </div>
           <MdShoppingBasket size={36} color="#FFF" />
         </Cart>
+        </div>
+      
       </Wrapper>
 
     </Container>

@@ -6,7 +6,6 @@ import { Container, ContentWrapper, ProductList } from './styles';
 import {api} from '../../services/api'
 
 export function Layout({storeType})  {
-  
   const [loading, setLoading] = useState(false)
   const [search, setSearch] = useState('')
   const [filteredPokemon, setFilteredPokemon] = useState([])
@@ -20,6 +19,11 @@ export function Layout({storeType})  {
 
     return [];
   })
+  const [isOpen, setIsOpen] = useState(true);
+
+  const toggle = () => {
+    setIsOpen(!isOpen)
+  }
 
   useEffect( () => {
     async function loadProducts() {
@@ -36,6 +40,7 @@ export function Layout({storeType})  {
            name:pokemonName,
            url: pokemonUrl,
            price: price,
+        
            
          }
        )
@@ -63,9 +68,9 @@ export function Layout({storeType})  {
   
   return (
     <>
-      <Header setSearch={setSearch}  />
-      <Container>
-        <ContentWrapper>
+      <Header setSearch={setSearch} toggle={toggle}  />
+      <Container >
+        <ContentWrapper isOpen={isOpen} >
           <ProductList>
             {loading ? <h1>loading...</h1> : filteredPokemon.map((pokemon)=> {
               return(
@@ -77,7 +82,7 @@ export function Layout({storeType})  {
           
             
           </ProductList>
-          <SideCart />
+          <SideCart isOpen={isOpen} toggle={toggle} />
         </ContentWrapper>
       </Container>
     </>

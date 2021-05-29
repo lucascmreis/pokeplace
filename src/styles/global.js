@@ -1,10 +1,12 @@
 import {createGlobalStyle} from 'styled-components'
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export const GlobalStyle = createGlobalStyle`
   :root{
     --background: #f0f2f5;
     --header-background: #363f5f;
+    --primary-color: #363f5f;
     --red: #e52e4d;
     --blue: #5429cc;
     --green: #33cc95;
@@ -12,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     --text-title: #fff;
     --text-body:  #969cb3;
     --shape: #fff;
+    --button:#6933ff;
 
   }
 

@@ -5,61 +5,79 @@ import React, {
   useContext,
   useEffect
 } from 'react';
-
+import { toast } from 'react-toastify';
+ 
 const CartContext = createContext({});
 
 export const CartProvider = ({ children }) => {
   const [pokemon, setPokemon] = useState([]);
+  
+  const [cart, setCart] = useState(() => {
+    const storagedCart = localStorage.getItem('@Pokeplace:cart')
 
-  useEffect(() => {
-    const items = localStorage.getItem('@Pokeplace:cart');
-
-    if (items) {
-      setPokemon(JSON.parse(items));
+    if (storagedCart) {
+      return JSON.parse(storagedCart);
     }
 
-  }, []);
+    return [];
+  });
 
-  useEffect(() => {
-    localStorage.setItem('@Pokeplace:cart', JSON.stringify(pokemon));
-  }, [pokemon])
 
-  const addToCart = useCallback(
-    sPokemon => {
-      const duplicated = pokemon.findIndex(
-        element => element.name === sPokemon.name,
-      );
+  const addProduct = async (pokemonList) => {
+    try {
+      const updateCart = [...cart];
+      const productExists = updateCart.find(product => product.name === pokemonList.name)
+      const currentAmount = productExists ? productExists.amount : 0
 
-      if (duplicated === -1) {
-        const { name, price } = sPokemon;
-        const newPokemon = {
-          name,
-          price,
-          type: window.location.pathname,
-          quantity: 1,
-        };
-        setPokemon([...pokemon, newPokemon]);
-      } else {
-        const items = pokemon.map(element => {
-          if (sPokemon.name === element.name) {
-            const { name, price, quantity } = element;
-            const newPokemon = {
-              name,
-              price,
-              type: window.location.pathname,
-              quantity: quantity + 1,
-            };
-            return newPokemon;
-          }
-          return element;
-        });
+      
+      const stockAmount = 3
+      
+      const newAmount = currentAmount + 1
 
-        setPokemon(items);
+      if(newAmount > stockAmount){
+        toast.error('Quantidade solicitada fora de estoque')
+        return
       }
-            
-    },
-    [pokemon, setPokemon],
-  );
+
+      if(productExists){
+        productExists.amount = newAmount
+      } else{
+      
+        const newProduct = {
+          ...pokemonList,
+          amount: 1
+        }
+
+        updateCart.push(newProduct)
+      }
+
+      setCart(updateCart)
+      localStorage.setItem('@Pokeplace:cart', JSON.stringify(updateCart))
+
+
+    } catch {
+      toast.error('Erro na adição do produto')
+    }
+  };
+
+  const removeProduct = (pokemonName) => {
+    try {
+      const updatedCart = [...cart]
+
+      const productIndex = updatedCart.findIndex(product => product.name===pokemonName)
+
+      if(productIndex >=0 ) {
+        updatedCart.splice(productIndex, 1)
+        setCart(updatedCart)
+        localStorage.setItem('@Pokeplace:cart', JSON.stringify(updatedCart))
+      }else {
+        throw Error()
+      }
+
+    } catch {
+      toast.error('Erro na remoção do produto')
+    }
+  };
 
   const setEmpty = useCallback(()=> {
     const filteredPokemon = pokemon.filter(element => element.type !== window.location.pathname);
@@ -69,60 +87,45 @@ export const CartProvider = ({ children }) => {
     setPokemon(filteredPokemon);
   }, [pokemon])
 
-  const increment = useCallback(
-    name => {
-      const items = pokemon.map(element => {
-        if (name === element.name) {
-          const { name: elementName, price, quantity } = element;
-          const newPokemon = {
-            name: elementName,
-            price,
-            type: window.location.pathname,
-            quantity: quantity + 1,
-          };
-          return newPokemon;
-        }
-        return element;
-      });
+  const updateProductAmount = async ({pokemonName, amount}) => {
 
-      setPokemon(items);
+    try {
 
-    },
-    [pokemon, setPokemon],
-  );
+      if(amount <=0 ){
+        return
+      }
 
-  const decrement = useCallback(
-    name => {
-      const items = pokemon.map(element => {
-        if (name === element.name) {
-          const { name: elementName, price, quantity, type } = element;
-          const newPokemon = {
-            name: elementName,
-            price,
-            type,
-            quantity: quantity - 1,
-          };
+      const stockAmount = 3
 
-          if (newPokemon.quantity > 0) {
-            return newPokemon;
-          }
-          return null;
-        }
-        return element;
-      });
+      if(amount > stockAmount){
+        toast.error('Quantidade solicitada fora de estoque')
+        return
+      }
+      const updatedCart = [...cart];
+      const productExists = updatedCart.find(product => product.name === pokemonName)
 
-      const filtered = items.filter(Boolean);
+      if(productExists){
+        productExists.amount = amount
+        setCart(updatedCart)
+        localStorage.setItem('@Pokeplace:cart', JSON.stringify(updatedCart))
+      } else{
+        throw Error()
+      } 
 
-      setPokemon(filtered);
+    } catch {
+      toast.error('Erro na adição do produto')
+    }
+  };
 
-    },
-    [pokemon, setPokemon],
-  );
+  
+  const value = { 
+    addProduct, 
+    updateProductAmount, 
+    removeProduct, 
+    pokemon,
+    cart, 
+    setEmpty }
 
-  const value = React.useMemo(
-    () => ({ addToCart, increment, decrement, pokemon, setEmpty }),
-    [addToCart, increment, decrement, pokemon, setEmpty],
-  );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
