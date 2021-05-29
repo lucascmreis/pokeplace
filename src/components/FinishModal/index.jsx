@@ -26,7 +26,7 @@ export function FinishModal({isOpen, onRequestClose}){
       </button>
 
       <Container >
-        <h2>Parabens</h2>
+        <h2>Voce ganhou</h2>
 
 
       </Container> 
