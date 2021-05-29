@@ -1,15 +1,14 @@
 import React, {
   createContext,
   useState,
-  useCallback,
   useContext,
-  useEffect
 } from 'react';
+
 import { toast } from 'react-toastify';
  
 const CartContext = createContext({});
 
-export const CartProvider = ({ children }) => {
+export const CartProvider = ({ children, onOpenNewModal }) => {
   const [pokemon, setPokemon] = useState([]);
   
   const [cart, setCart] = useState(() => {
@@ -79,13 +78,16 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  const setEmpty = useCallback(()=> {
-    const filteredPokemon = pokemon.filter(element => element.type !== window.location.pathname);
+  const setEmptyCart = () =>{
+    try{
+      const emptyCart = []
+      setCart(emptyCart)
+      localStorage.setItem('@Pokeplace:cart', emptyCart)
 
-    localStorage.setItem("Pokemon", filteredPokemon);
-
-    setPokemon(filteredPokemon);
-  }, [pokemon])
+    } catch{
+      toast.error('Não foi possível esvaziar o carrinho')
+    }
+  }
 
   const updateProductAmount = async ({pokemonName, amount}) => {
 
@@ -122,9 +124,11 @@ export const CartProvider = ({ children }) => {
     addProduct, 
     updateProductAmount, 
     removeProduct, 
+    setEmptyCart,
     pokemon,
     cart, 
-    setEmpty }
+    onOpenNewModal
+  }
 
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

@@ -82,7 +82,7 @@ export function Layout({storeType})  {
           
             
           </ProductList>
-          <SideCart isOpen={isOpen} toggle={toggle} />
+          <SideCart isOpen={isOpen} toggle={toggle}  />
         </ContentWrapper>
       </Container>
     </>

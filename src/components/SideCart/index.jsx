@@ -5,13 +5,20 @@ import {
   MdRemoveCircleOutline,
   MdClose
 } from 'react-icons/md';
+import {toast} from 'react-toastify'
 
 import { useCart } from '../../hooks/useCart';
 import { formatPrice } from '../../utils/formatPrice';
 import { Container, IconWrapper, ProductTable, Total } from './styles';
 
 export const SideCart = ({isOpen, toggle}) =>{
-  const { cart, removeProduct, updateProductAmount } = useCart();
+  const { 
+    cart, 
+    removeProduct, 
+    setEmptyCart,
+    updateProductAmount, 
+    onOpenNewModal 
+  } = useCart();
   const [cartFormatted, setCartFormatted] = useState([])
   const [total, setTotal] = useState([])
 
@@ -56,8 +63,18 @@ export const SideCart = ({isOpen, toggle}) =>{
       removeProduct(productName)
     }
 
-    function handleFinishOrder(){
+    function handleFinishOrder(toggle){
+      if(cartFormatted.length !== 0) {
+        toggle()
+        onOpenNewModal()
+        setEmptyCart()
+        console.log(cartFormatted)
+      } else {
+        toast.warning('Adicione produtos ao carrinho')
+        toggle()
+      }
       
+
     }
 
     useEffect(()=>{
@@ -138,7 +155,7 @@ export const SideCart = ({isOpen, toggle}) =>{
       <footer>
         <button 
           type="button"
-          onClick={() => handleFinishOrder()}
+          onClick={() => handleFinishOrder(toggle)}
         >
           Finalizar pedido
         </button>
