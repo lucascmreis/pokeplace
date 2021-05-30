@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'
 
-import { darken } from 'polished';
+import { darken, lighten } from 'polished';
+
 
 export const Container = styled.div`
     display: flex;
@@ -9,18 +10,26 @@ export const Container = styled.div`
     background: #fff;
     border-radius: 4px;
     padding: 20px;
-   
+
+    transition: all 0.1s ease-in-out ;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    
+    &:hover{
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+    
   
 
   img {
     align-self: center;
-    max-width: 250px;
+    max-width: 260px;
   }
 
   > strong {
-    font-size: 16px;
+    font-size: 1.5rem;
     line-height: 20px;
-    color: #333;
+    color: ${props => props.theme.colors.primary};
     margin-top: 5px;
   }
 
@@ -28,10 +37,11 @@ export const Container = styled.div`
     font-size: 21px;
     font-weight: bold;
     margin: 5px 0 20px;
+    color: ${props => props.theme.colors.secondary};
   }
 
   button {
-    background: #7159c1;
+    background: ${props => props.theme.colors.buttonSecondary};
     color: #fff;
     border: 0;
     border-radius: 4px;
@@ -40,17 +50,19 @@ export const Container = styled.div`
 
     display: flex;
     align-items: center;
-    transition: background 0.2s;
+    transition:  0.3s;
+
+    
 
     &:hover {
-      background: ${darken(0.06, '#7159c1')};
+     filter: brightness(1.15) ;
     }
 
     div {
       display: flex;
       align-items: center;
       padding: 12px;
-      background: rgba(0, 0, 0, 0.1);
+      background: ${props => props.theme.colors.button};
 
       svg {
         margin-right: 5px;
@@ -65,13 +77,17 @@ export const Container = styled.div`
   }
 `;
 
+
 export const InfoIconWrapper = styled.div`
 display: flex;
 margin-bottom: 1rem;
 justify-content: flex-end;
 cursor: pointer;
+color: ${props => props.theme.colors.secondary};
+
 transition: all 0.2s ease-in-out;
 &:hover{
-  transform: scale(1.03);
+  
+  filter: brightness(0.5)
 }
 ` 

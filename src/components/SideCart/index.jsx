@@ -104,14 +104,14 @@ export const SideCart = ({isOpen, toggle}) =>{
         <tbody>
           { cartFormatted.map(product => (
             <tr key={product.name}  data-testid="product">
-              <td>
+              <td data-label="" >
                 <img src={product.image} alt={product.title} />
               </td>
-              <td>
+              <td data-label="" >
                 <strong> {product.name} </strong>
                 <span>{product.priceFormatted}</span>
               </td>
-              <td>
+              <td data-label="Amount" >
                 <div>
                   <button
                     type="button"
@@ -136,7 +136,7 @@ export const SideCart = ({isOpen, toggle}) =>{
                   </button>
                 </div>
               </td>
-              <td>
+              <td data-label="Subtotal" >
                 <strong>{product.subTotal}</strong>
               </td>
               <td>

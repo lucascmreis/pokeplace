@@ -32,8 +32,9 @@ export function PokeCard({pokemonList}) {
   return (
     <Container>
       <InfoIconWrapper onClick={() => handleOnOpenModal(pokemonList.name)} >
-        <MdInfoOutline size={20} />
+        <MdInfoOutline size={24} />
       </InfoIconWrapper>
+
       <img src={pokemonList.image} alt={pokemonList.name} />
       <strong> {pokemonList.name} </strong>
       <span> {formatPrice(pokemonList.price)} </span>

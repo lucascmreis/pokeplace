@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 
 export const Container = styled.header`
-  background: var(--header-background);
-
+  background: ${props => props.theme.colors.backgroundHeader};
+  font-family: ${props => props.theme.font.fontFamily };
 
 `;
 
@@ -24,7 +24,7 @@ export const Wrapper = styled.div`
     transition: opacity 0.2s;
 
     h1{
-      color: var(--text-title);
+      color: ${props => props.theme.colors.textTitleLight};
       margin-left: 1rem;
     }
 

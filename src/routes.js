@@ -8,8 +8,8 @@ import Fire from './pages/Fireshop';
 const Routes = () => (
   <Switch>
     <Route path="/" exact component={Home} />
-    <Route path="/aquashop" exact component={Aqua} />
-    <Route path="/fireshop" exact component={Fire} />
+    <Route path="/aquashop" component={ Aqua}  />
+    <Route path="/fireshop"  component={Fire} />
   </Switch>
 );
 

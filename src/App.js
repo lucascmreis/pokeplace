@@ -9,7 +9,9 @@ import { ToastContainer } from 'react-toastify';
 import {FinishModal} from './components/FinishModal'
 import {DetailsModal} from './components/DetailsModal'
 
+
 import {GlobalStyle} from './styles/global'
+
 
 Modal.setAppElement('#root')
 
@@ -17,6 +19,7 @@ function App() {
   const [isNewModalOpen, setIsNewModalOpen] = useState(false)
   const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false)
   const [pokemon, setPokemon] = useState([])
+
 
 
   function handleOpenNewModal(){
@@ -62,24 +65,24 @@ function App() {
   return (
     <BrowserRouter>
       <CartProvider 
-        onOpenNewModal={handleOpenNewModal} 
-        onOpenDetailsModal={handleOpenDetailsModal} 
-      >
-        <GlobalStyle />
-        <Routes /> 
+          onOpenNewModal={handleOpenNewModal} 
+          onOpenDetailsModal={handleOpenDetailsModal} 
+        >
+          <GlobalStyle />
+          <Routes /> 
 
-        <FinishModal
-          isOpen={isNewModalOpen}
-          onRequestClose={handleCloseNewModal}
-        />
+          <FinishModal
+            isOpen={isNewModalOpen}
+            onRequestClose={handleCloseNewModal}
+          />
 
-        <DetailsModal 
-          isOpen={isDetailsModalOpen}
-          onRequestClose={handleCloseDetailsModal}
-          pokemon={pokemon}
-        />
-        <ToastContainer autoClose={3000}/>
-      </CartProvider>
+          <DetailsModal 
+            isOpen={isDetailsModalOpen}
+            onRequestClose={handleCloseDetailsModal}
+            pokemon={pokemon}
+          />
+          <ToastContainer autoClose={3000}/>
+        </CartProvider>
     </BrowserRouter>
   );
 }
