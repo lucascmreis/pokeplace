@@ -9,8 +9,7 @@ import { useCart } from '../../hooks/useCart';
 
 export function PokeCard({pokemonList}) {
 
-  const [pokemonImage, setPokemonImage] = useState([])
-  const { addProduct, cart, onOpenDetailsModal } = useCart();
+  const { addProduct, cart, onOpenDetailsModal,  } = useCart();
 
   const cartItemsAmount = cart.reduce((sumAmount, product) => {
     const newSumAmount = {...sumAmount}
@@ -27,27 +26,15 @@ export function PokeCard({pokemonList}) {
 
   function handleOnOpenModal(pokemonName){
     onOpenDetailsModal(pokemonName)
-  }
-
-  useEffect(()=>{
-    async function loadPokemonImage(){
-      const response = await api.get(`${pokemonList.url}`)
-
-      const imageUrl = response.data.sprites.front_default
     
-      setPokemonImage(imageUrl)
-      
-    }
-
-    loadPokemonImage()
-  },[])
+  }
 
   return (
     <Container>
       <InfoIconWrapper onClick={() => handleOnOpenModal(pokemonList.name)} >
         <MdInfoOutline size={20} />
       </InfoIconWrapper>
-      <img src={pokemonImage} alt={pokemonList.name} />
+      <img src={pokemonList.image} alt={pokemonList.name} />
       <strong> {pokemonList.name} </strong>
       <span> {formatPrice(pokemonList.price)} </span>
       <button

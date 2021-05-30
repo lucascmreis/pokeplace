@@ -17,8 +17,10 @@ export const SideCart = ({isOpen, toggle}) =>{
     removeProduct, 
     setEmptyCart,
     updateProductAmount, 
+    setTotalCashBack,
     onOpenNewModal 
   } = useCart();
+
   const [cartFormatted, setCartFormatted] = useState([])
   const [total, setTotal] = useState([])
 
@@ -30,12 +32,10 @@ export const SideCart = ({isOpen, toggle}) =>{
           subTotal: formatPrice(product.price * product.amount)
         }))
       
-        const totalPrice =
-          formatPrice(
-            cart.reduce((sumTotal, product) => {
-              return sumTotal + product.price * product.amount
-            }, 0)
-          )
+        const totalPrice = cart.reduce((sumTotal, product) => {
+          return sumTotal + product.price * product.amount
+        }, 0)
+
 
           setCartFormatted(cartFormattedData)
           setTotal(totalPrice)
@@ -63,12 +63,13 @@ export const SideCart = ({isOpen, toggle}) =>{
       removeProduct(productName)
     }
 
-    function handleFinishOrder(toggle){
+    function handleFinishOrder(toggle, total){
       if(cartFormatted.length !== 0) {
         toggle()
+        setTotalCashBack(total)
         onOpenNewModal()
         setEmptyCart()
-        console.log(cartFormatted)
+       
       } else {
         toast.warning('Adicione produtos ao carrinho')
         toggle()
@@ -104,7 +105,7 @@ export const SideCart = ({isOpen, toggle}) =>{
           { cartFormatted.map(product => (
             <tr key={product.name}  data-testid="product">
               <td>
-                <img src="{ }" alt={product.title} />
+                <img src={product.image} alt={product.title} />
               </td>
               <td>
                 <strong> {product.name} </strong>
@@ -155,13 +156,13 @@ export const SideCart = ({isOpen, toggle}) =>{
       <footer>
         <button 
           type="button"
-          onClick={() => handleFinishOrder(toggle)}
+          onClick={() => handleFinishOrder(toggle, total)}
         >
           Finalizar pedido
         </button>
         <Total>
           <span>TOTAL</span>
-          <strong>{total}</strong>
+          <strong>{ formatPrice(total)}</strong>
         </Total>
       </footer> 
     

@@ -4,12 +4,15 @@ import React, {
   useContext,
 } from 'react';
 
+
+
 import { toast } from 'react-toastify';
  
 const CartContext = createContext({});
 
 export const CartProvider = ({ children, onOpenNewModal, onOpenDetailsModal }) => {
-  const [pokemon, setPokemon] = useState([]);
+  
+  const [cashBack, setCashBack] = useState(0)
   
   const [cart, setCart] = useState(() => {
     const storagedCart = localStorage.getItem('@Pokeplace:cart')
@@ -20,7 +23,6 @@ export const CartProvider = ({ children, onOpenNewModal, onOpenDetailsModal }) =
 
     return [];
   });
-
 
   const addProduct = async (pokemonList) => {
     try {
@@ -119,16 +121,25 @@ export const CartProvider = ({ children, onOpenNewModal, onOpenDetailsModal }) =
     }
   };
 
+  const setTotalCashBack = (total) =>{
+    const cashBackTotal = total * 0.15  
+
+    setCashBack(cashBackTotal)
+  }
+
+ 
+
   
   const value = { 
     addProduct, 
     updateProductAmount, 
     removeProduct, 
     setEmptyCart,
-    pokemon,
     cart, 
     onOpenNewModal,
-    onOpenDetailsModal
+    onOpenDetailsModal,
+    setTotalCashBack,
+    cashBack,
   }
 
 

@@ -1,20 +1,23 @@
-import { BrowserRouter } from 'react-router-dom';
 import {useState} from 'react'
+import { BrowserRouter } from 'react-router-dom';
 import Modal from 'react-modal'
+
 import { CartProvider } from './hooks/useCart';
-import { ToastContainer } from 'react-toastify';
-import {GlobalStyle} from './styles/global'
+import { api } from './services/api'
 import Routes from './routes'
+import { ToastContainer } from 'react-toastify';
 import {FinishModal} from './components/FinishModal'
 import {DetailsModal} from './components/DetailsModal'
-import { api } from './services/api'
+
+import {GlobalStyle} from './styles/global'
 
 Modal.setAppElement('#root')
 
 function App() {
   const [isNewModalOpen, setIsNewModalOpen] = useState(false)
   const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false)
-  const [pokemonDetails, setPokemonDetails] = useState([])
+  const [pokemon, setPokemon] = useState([])
+
 
   function handleOpenNewModal(){
     setIsNewModalOpen(true)
@@ -24,8 +27,9 @@ function App() {
     setIsNewModalOpen(false)
   }
 
-  async function handleOpenDetailsModal(pokemonName) {
-    const response = await api.get(`/pokemon/${pokemonName}`)
+ async function handleOpenDetailsModal(pokemon) {
+  
+    const response = await api.get(`/pokemon/${pokemon}`)
 
     const id = response.data.id
     const abilities = response.data.abilities
@@ -35,7 +39,7 @@ function App() {
     const imageUrl = response.data.sprites.front_default
 
     const newPokemonDetails = {
-      name: pokemonName,
+      name: pokemon,
       id,
       abilities,
       height,
@@ -43,14 +47,15 @@ function App() {
       types,
       imageUrl
     }
-    setPokemonDetails(newPokemonDetails)
-    
 
+    setPokemon(newPokemonDetails)
     setIsDetailsModalOpen(true)
-     
+    
+    console.log(newPokemonDetails)
   }
 
   function handleCloseDetailsModal(){
+    setPokemon('')
     setIsDetailsModalOpen(false)
   }
 
@@ -62,14 +67,16 @@ function App() {
       >
         <GlobalStyle />
         <Routes /> 
+
         <FinishModal
           isOpen={isNewModalOpen}
           onRequestClose={handleCloseNewModal}
         />
+
         <DetailsModal 
           isOpen={isDetailsModalOpen}
           onRequestClose={handleCloseDetailsModal}
-          pokemonDetails ={pokemonDetails}
+          pokemon={pokemon}
         />
         <ToastContainer autoClose={3000}/>
       </CartProvider>
