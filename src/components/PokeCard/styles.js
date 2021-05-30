@@ -1,7 +1,17 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'
+
 import { darken } from 'polished';
 
 export const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+   
+  
+
   img {
     align-self: center;
     max-width: 250px;
@@ -54,3 +64,14 @@ export const Container = styled.div`
     }
   }
 `;
+
+export const InfoIconWrapper = styled.div`
+display: flex;
+margin-bottom: 1rem;
+justify-content: flex-end;
+cursor: pointer;
+transition: all 0.2s ease-in-out;
+&:hover{
+  transform: scale(1.03);
+}
+` 

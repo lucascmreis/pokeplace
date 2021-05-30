@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
-import { MdAddShoppingCart } from 'react-icons/md';
+import { MdAddShoppingCart, MdInfoOutline } from 'react-icons/md';
 import { api } from '../../services/api';
-import { Container } from './styles';
+import { Container, InfoIconWrapper } from './styles';
 import {formatPrice} from '../../utils/formatPrice'
 import { useCart } from '../../hooks/useCart';
+
 
 
 export function PokeCard({pokemonList}) {
 
   const [pokemonImage, setPokemonImage] = useState([])
-  const { addProduct, cart } = useCart();
+  const { addProduct, cart, onOpenDetailsModal } = useCart();
 
   const cartItemsAmount = cart.reduce((sumAmount, product) => {
     const newSumAmount = {...sumAmount}
@@ -22,6 +23,10 @@ export function PokeCard({pokemonList}) {
 
   function handleAddProduct(pokemon) {
     addProduct(pokemon)
+  }
+
+  function handleOnOpenModal(pokemonName){
+    onOpenDetailsModal(pokemonName)
   }
 
   useEffect(()=>{
@@ -39,6 +44,9 @@ export function PokeCard({pokemonList}) {
 
   return (
     <Container>
+      <InfoIconWrapper onClick={() => handleOnOpenModal(pokemonList.name)} >
+        <MdInfoOutline size={20} />
+      </InfoIconWrapper>
       <img src={pokemonImage} alt={pokemonList.name} />
       <strong> {pokemonList.name} </strong>
       <span> {formatPrice(pokemonList.price)} </span>

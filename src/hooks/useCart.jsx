@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
  
 const CartContext = createContext({});
 
-export const CartProvider = ({ children, onOpenNewModal }) => {
+export const CartProvider = ({ children, onOpenNewModal, onOpenDetailsModal }) => {
   const [pokemon, setPokemon] = useState([]);
   
   const [cart, setCart] = useState(() => {
@@ -127,7 +127,8 @@ export const CartProvider = ({ children, onOpenNewModal }) => {
     setEmptyCart,
     pokemon,
     cart, 
-    onOpenNewModal
+    onOpenNewModal,
+    onOpenDetailsModal
   }
 
 
