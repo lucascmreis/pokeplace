@@ -6,8 +6,8 @@ import {
   Container, Wrapper, Cart, InputWrapper,
 } from './styles';
 
-const Header = ({setSearch, toggle, pageProps}) => {
-  const {cart} = useCart();
+const Header = ({ setSearch, toggle, pageProps }) => {
+  const { cart } = useCart();
   const cartSize = cart.length;
 
   return (
@@ -27,22 +27,22 @@ const Header = ({setSearch, toggle, pageProps}) => {
               {cartSize}
             </span>
 
-            <span className="cart" >
+            <span className="cart">
               {cartSize === 1 ? `${cartSize} item` : `${cartSize} itens`}
             </span>
           </div>
           <MdShoppingBasket size={36} color="#FFF" />
         </Cart>
-       
+
       </Wrapper>
 
       <InputWrapper>
-          <input 
-            type="text"
-            placeholder="Digite aqui um Pokemon"
-            onChange={ (e) => setSearch(e.target.value)}
-          />
-          <MdSearch size={32} color="#ccc" />
+        <input
+          type="text"
+          placeholder="Digite aqui um Pokemon"
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <MdSearch size={32} color="#ccc" />
 
       </InputWrapper>
 

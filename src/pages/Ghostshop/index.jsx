@@ -1,24 +1,27 @@
+import { ThemeProvider } from 'styled-components';
+import { useEffect } from 'react';
 import { Layout } from '../../components/Layout';
+import { useCart } from '../../hooks/useCart';
 
-import {ThemeProvider} from 'styled-components'
-import ghostTheme from '../../styles/themes/ghostTheme'
-import ghostImg from '../../assets/ghost.png'
+import ghostTheme from '../../styles/themes/ghostTheme';
+import ghostImg from '../../assets/ghost.png';
 
 export default function GhostShop() {
-  const storeType = 'ghost'
+  const { setLocalStorageCartStoreName } = useCart();
+  const storeType = 'ghost';
   const pageProps = {
     title: 'ghostShop',
-    image: ghostImg
-  }
-  
-  return (
+    image: ghostImg,
+  };
+  useEffect(() => {
+    setLocalStorageCartStoreName(storeType);
+  }, []);
 
+  return (
     <>
-      <ThemeProvider theme={ghostTheme} >
-       <Layout storeType={storeType} pageProps={pageProps} />
+      <ThemeProvider theme={ghostTheme}>
+        <Layout storeType={storeType} pageProps={pageProps} />
       </ThemeProvider>
     </>
-
   );
-};
-
+}

@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import {darken} from 'polished'
+import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.div`
     background:#f6f4f5;
@@ -27,12 +27,12 @@ export const Container = styled.div`
             );
       z-index: 2;
     }
-`
+`;
 
-export const BackgroundWrapper = styled.div `
+export const BackgroundWrapper = styled.div`
 
   display: flex;
- 
+
  img{
     width: 100%;
     height:100%;
@@ -46,36 +46,36 @@ export const BackgroundWrapper = styled.div `
     overflow: hidden;
     z-index: 0;
   }
-`
+`;
 
-export const Content = styled.div `
+export const Content = styled.div`
   display: flex;
   max-width:80vw;
   width:100%;
   height:100%;
   position: absolute;
   padding: 8px 24px;
- 
+
   align-items: center;
   justify-content: space-between;
   text-align: center;
   color: #f6f4f5;
   z-index:3;
 
-  
+
   @media screen and (max-width: 768px) {
     flex-direction: column;
     justify-content: center;
   }
 
-`
-export const LogoWrapper =styled.div`
+`;
+export const LogoWrapper = styled.div`
 
   height: 80%;
   justify-content: center;
   align-items: center;
 
-  img{   
+  img{
     width: 24rem;
     -webkit-filter: drop-shadow(0 3px 5px rgba(0,0,0,.3));
     -moz-filter: drop-shadow(0 3px 5px rgba(0,0,0,.3));
@@ -83,13 +83,13 @@ export const LogoWrapper =styled.div`
     -o-filter: drop-shadow(0 3px 5px rgba(0,0,0,.3));
     filter: drop-shadow(0 3px 5px rgba(0,0,0,.3));
   }
-  
+
   h2{
     font-weight: 300;
     font-size: 2rem;
     padding: 0.5rem;
     color: var(--yellow);
-    
+
 
     -webkit-filter: drop-shadow(0 3px 5px rgba(0,0,0,.3));
     -moz-filter: drop-shadow(0 3px 5px rgba(0,0,0,.3));
@@ -102,20 +102,25 @@ export const LogoWrapper =styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-     
+      width: 35%;
       margin: 0 auto;
-      
+
 
     a{
       display: flex;
       justify-items: center;
       align-items: center;
-       margin: 0 auto;
+
+      width: 100%;
+      padding: 1rem;
+      margin: 0 auto;
+
+      img{
+      width: 15%;
+      margin-right: 0.5rem;
+      }
     }
 
-    img{
-      width: 5%;
-    }
     &:hover{
       color: ${darken(0.25, '#fff')}
     }
@@ -137,16 +142,16 @@ export const LogoWrapper =styled.div`
     }
     img{
       width: 16rem;
-    } 
+    }
   }
-`
+`;
 
 export const LinksWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1rem;
   align-items: center;
-  
+
 
   h3{
     font-size: 1.2rem;
@@ -177,7 +182,7 @@ export const LinksWrapper = styled.div`
       align-items: center;
 
 
-    
+
       img{
         width: 5.5rem;
         margin-bottom: 0.5rem;
@@ -237,4 +242,4 @@ export const LinksWrapper = styled.div`
     }
   }
 
-`
+`;

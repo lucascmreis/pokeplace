@@ -1,19 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import {Container, BackgroundWrapper, Content, LinksWrapper, LogoWrapper} from './styles'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import {
+  Container, BackgroundWrapper, Content, LinksWrapper, LogoWrapper,
+} from './styles';
 
-import backgroundImg from '../../assets/background-home.jpg'
-import logoImg from '../../assets/pokeplaceLogo.png'
-import waterImg from '../../assets/water.png'
-import ghostImg from '../../assets/ghost.png'
-import fireImg from '../../assets/fire.png'
-import githubImg from '../../assets/github.png'
+import backgroundImg from '../../assets/background-home.jpg';
+import logoImg from '../../assets/pokeplaceLogo.png';
+import waterImg from '../../assets/water.png';
+import ghostImg from '../../assets/ghost.png';
+import fireImg from '../../assets/fire.png';
+import githubImg from '../../assets/github.png';
 
 function Home() {
-
-
   return (
-    <Container >
+    <Container>
       <BackgroundWrapper>
         <img src={backgroundImg} alt="pokeball grass background " />
       </BackgroundWrapper>
@@ -25,7 +25,7 @@ function Home() {
 
           <footer>
             <a href="https://github.com/lucascmreis">
-              <img src={githubImg} alt=""/>
+              <img src={githubImg} alt="" />
               <small>@lucascmreis - {new Date().getFullYear()}</small>
             </a>
           </footer>
@@ -36,27 +36,26 @@ function Home() {
 
           <ul>
             <li>
-              <Link  to="/fireshop" >
+              <Link to="/fireshop">
                 <img src={fireImg} alt="Fireshop" />
                 <span>Fireshop</span>
               </Link>
             </li>
 
             <li>
-              <Link to="/aquashop" >
+              <Link to="/aquashop">
                 <img src={waterImg} alt="Aquashop" />
                 <span>Aquashop</span>
               </Link>
             </li>
 
             <li>
-              <Link to="/ghostshop" >
+              <Link to="/ghostshop">
                 <img src={ghostImg} alt="Ghostshop" />
                 <span>GhostShop</span>
               </Link>
             </li>
-        
-            
+
           </ul>
         </LinksWrapper>
       </Content>

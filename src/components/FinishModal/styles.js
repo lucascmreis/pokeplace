@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -18,7 +18,7 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
 
     p{
       font-size: 1.2rem;
@@ -36,7 +36,7 @@ export const Container = styled.div`
 
   }
 
-`
+`;
 
 export const LinksWrapper = styled.div`
   display: flex;
@@ -73,7 +73,7 @@ export const LinksWrapper = styled.div`
 
       span{
         font-weight: 600;
-        
+
       }
     }
 
@@ -83,7 +83,4 @@ export const LinksWrapper = styled.div`
     }
   }
 
-`
-
-
-
+`;

@@ -1,97 +1,88 @@
-import React,{useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   MdDelete,
   MdAddCircleOutline,
   MdRemoveCircleOutline,
-  MdClose
+  MdClose,
 } from 'react-icons/md';
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify';
 
 import { useCart } from '../../hooks/useCart';
 import { formatPrice } from '../../utils/formatPrice';
-import { Container, IconWrapper, ProductTable, Total } from './styles';
+import {
+  Container, IconWrapper, ProductTable, Total,
+} from './styles';
 
-export const SideCart = ({isOpen, toggle}) =>{
-  const { 
-    cart, 
-    removeProduct, 
+export const SideCart = ({ isOpen, toggle }) => {
+  const {
+    cart,
+    removeProduct,
     setEmptyCart,
-    updateProductAmount, 
+    updateProductAmount,
     setTotalCashBack,
-    onOpenNewModal 
+    onOpenNewModal,
   } = useCart();
 
-  const [cartFormatted, setCartFormatted] = useState([])
-  const [total, setTotal] = useState([])
+  const [cartFormatted, setCartFormatted] = useState([]);
+  const [total, setTotal] = useState([]);
 
-    function loadCart(){
+  function loadCart() {
+    if (cart) {
+      const cartFormattedData = cart.map((product) => ({
+        ...product,
+        priceFormatted: formatPrice(product.price),
+        subTotal: formatPrice(product.price * product.amount),
+      }));
 
-      if(cart){
-        const cartFormattedData = cart.map(product => ({
-          ...product,
-          priceFormatted: formatPrice(product.price),
-          subTotal: formatPrice(product.price * product.amount)
-        }))
-      
-        const totalPrice = cart.reduce((sumTotal, product) => {
-          return sumTotal + product.price * product.amount
-        }, 0)
+      const totalPrice = cart.reduce((sumTotal, product) => sumTotal + product.price * product.amount, 0);
 
-
-          setCartFormatted(cartFormattedData)
-          setTotal(totalPrice)
-      }
-    
+      setCartFormatted(cartFormattedData);
+      setTotal(totalPrice);
     }
+  }
 
-    function handleProductIncrement(product) {
-      const productToIncrement = {
-        pokemonName: product.name,
-        amount: product.amount + 1
-      }
-      updateProductAmount(productToIncrement)
+  function handleProductIncrement(product) {
+    const productToIncrement = {
+      pokemonName: product.name,
+      amount: product.amount + 1,
+    };
+    updateProductAmount(productToIncrement);
+  }
+
+  function handleProductDecrement(product) {
+    const productToDecrement = {
+      pokemonName: product.name,
+      amount: product.amount - 1,
+    };
+    updateProductAmount(productToDecrement);
+  }
+
+  function handleRemoveProduct(productName) {
+    removeProduct(productName);
+  }
+
+  function handleFinishOrder(toggle, total) {
+    if (cartFormatted.length !== 0) {
+      toggle();
+      setTotalCashBack(total);
+      onOpenNewModal();
+      setEmptyCart();
+    } else {
+      toast.warning('Adicione produtos ao carrinho');
+      toggle();
     }
-      
-    function handleProductDecrement(product) {
-      const productToDecrement = {
-        pokemonName: product.name,
-        amount: product.amount - 1
-      }
-      updateProductAmount(productToDecrement)
-    }
-  
-    function handleRemoveProduct(productName) {
-      removeProduct(productName)
-    }
+  }
 
-    function handleFinishOrder(toggle, total){
-      if(cartFormatted.length !== 0) {
-        toggle()
-        setTotalCashBack(total)
-        onOpenNewModal()
-        setEmptyCart()
-       
-      } else {
-        toast.warning('Adicione produtos ao carrinho')
-        toggle()
-      }
-      
-
-    }
-
-    useEffect(()=>{
-      loadCart()
-     
-    },[cart])
-
-
+  useEffect(() => {
+    loadCart();
+  }, [cart]);
 
   return (
-    <Container isOpen={isOpen}  >
-      <IconWrapper onClick={toggle} >
+    <Container isOpen={isOpen}>
+      <IconWrapper onClick={toggle}>
         <MdClose />
       </IconWrapper>
-      
+
       <ProductTable>
         <thead>
           <tr>
@@ -103,16 +94,16 @@ export const SideCart = ({isOpen, toggle}) =>{
           </tr>
         </thead>
         <tbody>
-          { cartFormatted.map(product => (
-            <tr key={product.name}  data-testid="product">
-              <td data-label="" >
+          { cartFormatted.map((product) => (
+            <tr key={product.name} data-testid="product">
+              <td data-label="">
                 <img src={product.image} alt={product.title} />
               </td>
-              <td data-label="" >
+              <td data-label="">
                 <strong> {product.name} </strong>
                 <span>{product.priceFormatted}</span>
               </td>
-              <td data-label="Amount" >
+              <td data-label="Amount">
                 <div>
                   <button
                     type="button"
@@ -137,25 +128,25 @@ export const SideCart = ({isOpen, toggle}) =>{
                   </button>
                 </div>
               </td>
-              <td data-label="Subtotal" >
+              <td data-label="Subtotal">
                 <strong>{product.subTotal}</strong>
               </td>
               <td>
                 <button
                   type="button"
                   data-testid="remove-product"
-                onClick={() => handleRemoveProduct(product.name)}
+                  onClick={() => handleRemoveProduct(product.name)}
                 >
                   <MdDelete size={20} />
                 </button>
               </td>
             </tr>
-          ) ) }
+          )) }
         </tbody>
       </ProductTable>
 
       <footer>
-        <button 
+        <button
           type="button"
           onClick={() => handleFinishOrder(toggle, total)}
         >
@@ -165,8 +156,8 @@ export const SideCart = ({isOpen, toggle}) =>{
           <span>TOTAL</span>
           <strong>{ formatPrice(total)}</strong>
         </Total>
-      </footer> 
-    
+      </footer>
+
     </Container>
-  )
-}
+  );
+};

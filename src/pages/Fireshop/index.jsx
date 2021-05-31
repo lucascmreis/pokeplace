@@ -1,24 +1,27 @@
+import { ThemeProvider } from 'styled-components';
+import { useEffect } from 'react';
 import { Layout } from '../../components/Layout';
-
-import {ThemeProvider} from 'styled-components'
-import fireTheme from '../../styles/themes/fireTheme'
-import fireImg from '../../assets/fire.png'
+import { useCart } from '../../hooks/useCart';
+import fireTheme from '../../styles/themes/fireTheme';
+import fireImg from '../../assets/fire.png';
 
 export default function FireShop() {
-  const storeType = 'fire'
+  const { setLocalStorageCartStoreName } = useCart();
+  const storeType = 'fire';
   const pageProps = {
     title: 'FireShop',
-    image: fireImg
-  }
+    image: fireImg,
+  };
+
+  useEffect(() => {
+    setLocalStorageCartStoreName(storeType);
+  }, []);
 
   return (
-
     <>
-      <ThemeProvider theme={fireTheme} >
-       <Layout storeType={storeType} pageProps={pageProps} />
+      <ThemeProvider theme={fireTheme}>
+        <Layout storeType={storeType} pageProps={pageProps} />
       </ThemeProvider>
     </>
-
   );
-};
-
+}

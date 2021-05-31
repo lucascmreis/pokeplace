@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {  lighten } from 'polished';
+import { lighten } from 'polished';
 
 export const Container = styled.div`
   position: fixed;
@@ -12,8 +12,8 @@ export const Container = styled.div`
   align-items: center;
   padding: 2rem;
   top: 0;
-  opacity:  ${({isOpen}) => (isOpen ?  '100%' : '0')};
-  right: ${({isOpen}) => isOpen ? '0' : '-100%'};
+  opacity:  ${({ isOpen }) => (isOpen ? '100%' : '0')};
+  right: ${({ isOpen }) => (isOpen ? '0' : '-100%')};
   transition: 0.3s ease-in-out;
   box-shadow: -5px 5px 21px -4px rgba(0,0,0,0.46);
     -webkit-box-shadow: -5px 5px 21px -4px rgba(0,0,0,0.46);
@@ -22,7 +22,7 @@ export const Container = styled.div`
 
   @media screen and (min-width: 1024px){
   width: 60%;
- 
+
   }
 
   @media screen and (max-width: 920px){
@@ -39,7 +39,7 @@ export const Container = styled.div`
 
 
     button {
-      background: ${props => props.theme.colors.button};
+      background: ${(props) => props.theme.colors.button};
       color: #fff;
       border: 0;
       border-radius: 4px;
@@ -49,7 +49,7 @@ export const Container = styled.div`
       transition: all 0.2s ease-in-out;
 
       &:hover {
-        background: ${props => props.theme.colors.buttonSecondary};
+        background: ${(props) => props.theme.colors.buttonSecondary};
         transform: scale(1.02);
       }
     }
@@ -58,7 +58,7 @@ export const Container = styled.div`
       flex-direction: column-reverse;
       justify-content: center;
       margin-bottom: 1rem;
-      
+
       button{
         margin-top: 1rem;
         margin-bottom: 1rem;
@@ -77,27 +77,27 @@ export const IconWrapper = styled.div`
   font-size: 2rem;
   outline: none;
   cursor:pointer;
-  color: ${props => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.primary};
 
   transition: all 0.2s ease-in-out;
   &:hover{
-    color: ${props => props.theme.colors.secondary};
+    color: ${(props) => props.theme.colors.secondary};
   }
-`
+`;
 
 export const ProductTable = styled.table`
   display: flex ;
   flex-direction: column;
   width: 100%;
   margin-top: 1rem;
-  
 
- 
+
+
   thead{
     display: block;
     justify-content: space-between;
     align-items: center;
- 
+
   }
 
   tbody{
@@ -107,17 +107,18 @@ export const ProductTable = styled.table`
     overflow-y: scroll;
     height: 50vh;
 
-  
+
+
     ::-webkit-scrollbar {
       width: 12px;
       height: 13px;
     }
     ::-webkit-scrollbar-thumb {
-      background: ${props => props.theme.colors.secondary};
+      background: ${(props) => props.theme.colors.secondary};
       border-radius: 9px;
     }
     ::-webkit-scrollbar-thumb:hover{
-      background:  ${props => props.theme.colors.primary};
+      background:  ${(props) => props.theme.colors.primary};
     }
     ::-webkit-scrollbar-track{
       background: #ffffff;
@@ -127,11 +128,11 @@ export const ProductTable = styled.table`
   }
 
   thead th {
-    
+
     color: #999;
     text-align: left;
     padding: 1rem 2rem;
-   
+
   }
 
   tbody td {
@@ -174,13 +175,13 @@ export const ProductTable = styled.table`
     padding: 6px;
 
     svg {
-      color: ${props => props.theme.colors.button};
+      color: ${(props) => props.theme.colors.button};
       transition: color 0.2s;
     }
 
     &:hover {
       svg {
-        color: ${props => props.theme.colors.buttonSecondary};
+        color: ${(props) => props.theme.colors.buttonSecondary};
       }
     }
 
@@ -193,7 +194,7 @@ export const ProductTable = styled.table`
   }
 
   @media screen and (max-width: 600px) {
-    
+
     thead{
       border: none;
       clip: rect(0 0 0 0);
@@ -209,22 +210,22 @@ export const ProductTable = styled.table`
       border-bottom: 3px solid #ccc;
       display: block;
       margin-bottom: .625em;
-      
+
     }
-  
+
     tbody td {
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: .8em;
       text-align: right;
-      
+
      & > strong{
         font-size: 1.5em;
       }
 
     }
-  
+
      td::before {
       /*
       * aria-label has no advantage, it won't be read inside a table
@@ -235,7 +236,7 @@ export const ProductTable = styled.table`
       font-weight: bold;
       text-transform: uppercase;
     }
-  
+
     td:first-child {
       border-bottom: 0;
       justify-content: center;
@@ -247,35 +248,35 @@ export const ProductTable = styled.table`
       display: block;
       align-items: center;
       justify-items: center;
-    
+
       strong{
         text-align: left;
         align-items: center;
 
       }
-      
+
     }
-    
+
      td:last-child {
       border-bottom: 0;
       justify-content: center;
     }
   }
-  
-  
+
+
 `;
 
 export const Total = styled.div`
   display: flex;
   align-items: baseline;
-  
+
   span {
     color: #999;
     font-weight: bold;
   }
 
   strong {
-    color: ${props => props.theme.colors.secondary};
+    color: ${(props) => props.theme.colors.secondary};
     font-size: 28px;
     margin-left: 5px;
   }

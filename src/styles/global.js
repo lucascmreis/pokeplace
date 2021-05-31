@@ -1,6 +1,5 @@
-import {createGlobalStyle} from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 import 'react-toastify/dist/ReactToastify.css';
-
 
 export const GlobalStyle = createGlobalStyle`
   :root{
@@ -80,7 +79,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .react-modal-content{
-    width: 100%;
+    width: 80%;
     max-width: 768px;
     background: var(--background);
     padding: 3rem;
@@ -90,7 +89,7 @@ export const GlobalStyle = createGlobalStyle`
 
   .react-modal-content-details{
     width: 60vw;
-    height: 70vh;
+    height: 75vh;
     background: var(--background);
     padding: 3rem;
     position: relative;

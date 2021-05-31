@@ -1,98 +1,86 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react';
 
-import {api} from '../../services/api'
+import { api } from '../../services/api';
 import Header from '../Header';
 import { PokeCard } from '../PokeCard';
 import { SideCart } from '../SideCart';
 
 import { Container, ContentWrapper, ProductList } from './styles';
 
-
-export function Layout({storeType, pageProps})  {
-
-  const [loading, setLoading] = useState(false)
-  const [search, setSearch] = useState('')
-  const [filteredPokemon, setFilteredPokemon] = useState([])
+export function Layout({ storeType, pageProps }) {
+  const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState('');
+  const [filteredPokemon, setFilteredPokemon] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
   const [catalogPokemon, setCatalogPokemon] = useState(() => {
-    const storagedCart = localStorage.getItem(`@Pokeplace: list`)
-    
+    const storagedCart = localStorage.getItem('@Pokeplace: list');
+
     if (storagedCart) {
       return JSON.parse(storagedCart);
     }
-      return [];
-  })
+    return [];
+  });
 
-  const toggle = () => setIsOpen(!isOpen)
-  
+  const toggle = () => setIsOpen(!isOpen);
 
-  useEffect( () => {
+  useEffect(() => {
     async function loadProducts() {
-      setLoading(true)
+      setLoading(true);
 
-      const response =  await api.get(`/type/${storeType}`)
-      
-      const pokemonList = response.data.pokemon.map((pokemon)=>{
-      const pokemonName = pokemon.pokemon.name
-      const pokemonUrl = pokemon.pokemon.url
-      const price = pokemonName.length * 150
-      const id = pokemon.pokemon.url.split("/", 7).slice(-1).toString()
-      const image= `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.pokemon.url
-        .split("/", 7)
-        .slice(-1)
-        .toString()}.png`
+      const response = await api.get(`/type/${storeType}`);
 
-       return(
-         {
-           id: id,
-           name:pokemonName,
-           url: pokemonUrl,
-           price: price,
-           image: image
-           
-         }
-       )
-       
-      })
+      const pokemonList = response.data.pokemon.map((pokemon) => {
+        const pokemonName = pokemon.pokemon.name;
+        const pokemonUrl = pokemon.pokemon.url;
+        const price = pokemonName.length * 150;
+        const id = pokemon.pokemon.url.split('/', 7).slice(-1).toString();
+        const image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.pokemon.url
+          .split('/', 7)
+          .slice(-1)
+          .toString()}.png`;
 
-      setCatalogPokemon(pokemonList)
-      setLoading(false)
-      localStorage.setItem('@Pokeplace:list', JSON.stringify(pokemonList))
-    
-     }
+        return (
+          {
+            id,
+            name: pokemonName,
+            url: pokemonUrl,
+            price,
+            image,
 
-      loadProducts();
+          }
+        );
+      });
 
-  },[])
+      setCatalogPokemon(pokemonList);
+      setLoading(false);
+      localStorage.setItem('@Pokeplace:list', JSON.stringify(pokemonList));
+    }
 
-  useEffect(()=>{
+    loadProducts();
+  }, []);
+
+  useEffect(() => {
     setFilteredPokemon(
-      catalogPokemon.filter((pokemon) =>
-        pokemon.name.toLowerCase().includes(search.toLowerCase())
-      )
+      catalogPokemon.filter((pokemon) => pokemon.name.toLowerCase().includes(search.toLowerCase())),
     );
-  },[search, catalogPokemon])
+  }, [search, catalogPokemon]);
 
-
-  
   return (
     <>
-      <Header setSearch={setSearch} toggle={toggle} pageProps={pageProps}  />
-      <Container >
-        <ContentWrapper isOpen={isOpen} >
+      <Header setSearch={setSearch} toggle={toggle} pageProps={pageProps} />
+      <Container>
+        <ContentWrapper isOpen={isOpen}>
           <ProductList>
 
-            {loading ? <h1>loading...</h1> : filteredPokemon.map((pokemon)=> {
-              return(
-                <li key={pokemon.name}>
-                  <PokeCard pokemonList={pokemon} />
-                </li>
-              )
-            }) }
-          
+            {loading ? <h1>loading...</h1> : filteredPokemon.map((pokemon) => (
+              <li key={pokemon.name}>
+                <PokeCard pokemonList={pokemon} />
+              </li>
+            )) }
+
           </ProductList>
-          <SideCart isOpen={isOpen} toggle={toggle}  />
+          <SideCart isOpen={isOpen} toggle={toggle} />
         </ContentWrapper>
       </Container>
     </>

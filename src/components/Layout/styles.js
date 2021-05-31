@@ -4,8 +4,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  background: ${props => props.theme.colors.background};
-  font-family: ${props => props.theme.font.fontFamily };
+  background: ${(props) => props.theme.colors.background};
+  font-family: ${(props) => props.theme.font.fontFamily};
 
 
 `;
@@ -21,7 +21,7 @@ export const ContentWrapper = styled.div`
   @media screen and (max-width: 475px){
     max-width: 85%;
   }
-  
+
 `;
 
 export const ProductList = styled.div`
@@ -38,11 +38,11 @@ export const ProductList = styled.div`
  height: 13px;
 }
 ::-webkit-scrollbar-thumb {
- background: ${props => props.theme.colors.secondary};
+ background: ${(props) => props.theme.colors.secondary};
  border-radius: 9px;
 }
 ::-webkit-scrollbar-thumb:hover{
- background:  ${props => props.theme.colors.primary};
+ background:  ${(props) => props.theme.colors.primary};
 }
 ::-webkit-scrollbar-track{
  background: #ffffff;
@@ -53,7 +53,7 @@ export const ProductList = styled.div`
 
   li {
     max-height: 340px;
-        
+
   }
 
   @media screen and (max-width: 920px){

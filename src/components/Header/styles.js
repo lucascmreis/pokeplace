@@ -1,15 +1,14 @@
 import styled from 'styled-components';
 
-
 export const Container = styled.header`
-  background: ${props => props.theme.colors.backgroundHeader};
-  font-family: ${props => props.theme.font.fontFamily };
+  background: ${(props) => props.theme.colors.backgroundHeader};
+  font-family: ${(props) => props.theme.font.fontFamily};
   display: block;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
 
- 
+
 
 `;
 
@@ -28,10 +27,10 @@ export const Wrapper = styled.div`
     margin-left: 2rem;
 
     h1{
-      color: ${props => props.theme.colors.textTitleLight};
+      color: ${(props) => props.theme.colors.textTitleLight};
       margin-left: 1rem;
       margin-right: 1rem;
-      
+
     }
     img{
       width: 20%;
@@ -65,7 +64,7 @@ export const InputWrapper = styled.div`
   justify-items: center;
   max-width: 1024px;
   padding: 1.5rem 3rem ;
- 
+
 
   input{
     border: 0;
@@ -97,7 +96,7 @@ export const Cart = styled.div`
 
       @media screen and (max-width:768px){
       display:none;
-    
+
       }
     }
 
@@ -127,16 +126,16 @@ export const Cart = styled.div`
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      background: ${props => props.theme.colors.secondary};
+      background: ${(props) => props.theme.colors.secondary};
       width: 1.2rem ;
       height: 1.2rem ;
       margin-left: -10px;
-      color: ${props => props.theme.colors.shape};
+      color: ${(props) => props.theme.colors.shape};
       font-size: 0.8rem;
       font-weight: 600;
 
     }
- 
+
     .cart{
       display: none;
     }
