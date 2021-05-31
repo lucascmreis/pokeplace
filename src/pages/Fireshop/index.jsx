@@ -10,7 +10,7 @@ export default function FireShop() {
     title: 'FireShop',
     image: fireImg
   }
-  
+
   return (
 
     <>

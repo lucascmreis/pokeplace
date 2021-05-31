@@ -1,5 +1,4 @@
-import React, {
-  createContext,
+import React, {createContext,
   useState,
   useEffect,
   useContext,
@@ -8,13 +7,13 @@ import React, {
 
 
 import { toast } from 'react-toastify';
- 
+
 const CartContext = createContext({});
 
-export const CartProvider = ({ children, onOpenNewModal, onOpenDetailsModal }) => { 
+export const CartProvider = ({ children, onOpenNewModal, onOpenDetailsModal }) => {
 
   const storageName = '@Pokeplace:cart'+ window.location.pathname
-  
+
   const [cashBack, setCashBack] = useState(0)
   const [localStorageCartStoreName, setLocalStorageCartStoreName] = useState(storageName)
 
@@ -44,9 +43,9 @@ export const CartProvider = ({ children, onOpenNewModal, onOpenDetailsModal }) =
       const productExists = updateCart.find(product => product.name === pokemonList.name)
       const currentAmount = productExists ? productExists.amount : 0
 
-      
+
       const stockAmount = 3
-      
+
       const newAmount = currentAmount + 1
 
       if(newAmount > stockAmount){
@@ -57,7 +56,7 @@ export const CartProvider = ({ children, onOpenNewModal, onOpenDetailsModal }) =
       if(productExists){
         productExists.amount = newAmount
       } else{
-      
+
         const newProduct = {
           ...pokemonList,
           amount: 1
@@ -128,7 +127,7 @@ export const CartProvider = ({ children, onOpenNewModal, onOpenDetailsModal }) =
         localStorage.setItem(localStorageCartStoreName, JSON.stringify(updatedCart))
       } else{
         throw Error()
-      } 
+      }
 
     } catch {
       toast.error('Erro na adição do produto')
@@ -136,21 +135,21 @@ export const CartProvider = ({ children, onOpenNewModal, onOpenDetailsModal }) =
   };
 
   const setTotalCashBack = (total) =>{
-    const cashBackTotal = total * 0.15  
+    const cashBackTotal = total * 0.15
 
     setCashBack(cashBackTotal)
   }
 
- 
 
-  
-  const value = { 
-    addProduct, 
-    updateProductAmount, 
-    removeProduct, 
+
+
+  const value = {
+    addProduct,
+    updateProductAmount,
+    removeProduct,
     setEmptyCart,
     setTotalCashBack,
-    cart, 
+    cart,
     onOpenNewModal,
     onOpenDetailsModal,
     cashBack,

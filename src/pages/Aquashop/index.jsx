@@ -10,7 +10,7 @@ export default function AquaShop() {
     title: 'AquaShop',
     image: waterImg
   }
-  
+
   return (
 
     <>
