@@ -1,7 +1,6 @@
 import {useState, useEffect} from 'react'
 
 import {api} from '../../services/api'
-import { useCart } from '../../hooks/useCart';
 import Header from '../Header';
 import { PokeCard } from '../PokeCard';
 import { SideCart } from '../SideCart';

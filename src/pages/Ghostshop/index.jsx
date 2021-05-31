@@ -1,7 +1,7 @@
 import { Layout } from '../../components/Layout';
 
 import {ThemeProvider} from 'styled-components'
-import ghostTheme from '../../styles/themes/waterTheme'
+import ghostTheme from '../../styles/themes/ghostTheme'
 import ghostImg from '../../assets/ghost.png'
 
 export default function GhostShop() {

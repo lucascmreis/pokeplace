@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { darken, lighten } from 'polished';
+import {  lighten } from 'polished';
 
 export const Container = styled.div`
   position: fixed;

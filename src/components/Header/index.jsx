@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { MdShoppingBasket, MdSearch } from 'react-icons/md';
 import { useCart } from '../../hooks/useCart';
-import waterLogo from '../../assets/water.png';
 
 import {
   Container, Wrapper, Cart, InputWrapper,

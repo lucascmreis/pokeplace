@@ -103,7 +103,7 @@ export const Cart = styled.div`
 
     span  {
       font-size: 1rem;
-      color: #999;
+      color: #ccc;
     }
 
     .mobile-cart{

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import {Container, BackgroundWrapper, Content, LinksWrapper, LogoWrapper} from './styles'
 
@@ -15,7 +15,7 @@ function Home() {
   return (
     <Container >
       <BackgroundWrapper>
-        <img src={backgroundImg} alt="pokeball grass background image" />
+        <img src={backgroundImg} alt="pokeball grass background " />
       </BackgroundWrapper>
 
       <Content>

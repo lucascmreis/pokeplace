@@ -1,16 +1,10 @@
-import {useState, useEffect} from 'react'
-
-import {api} from '../../services/api'
+import {useState} from 'react'
 import {Container, ImageWrapper, ContentWrapper } from './styles'
 
 
 export const DetailsCard = ({pokemon}) => {
 
   const [pokemonDetails, setPokemonDetails] = useState(pokemon)
-  
-  const [isLoading, setIsLoading] = useState(true)
-
-  console.log('dentro',pokemonDetails)
   
   return(
     <Container >

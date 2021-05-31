@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react';
 import { MdAddShoppingCart, MdInfoOutline } from 'react-icons/md';
-import { api } from '../../services/api';
 import { Container, InfoIconWrapper } from './styles';
 import {formatPrice} from '../../utils/formatPrice'
 import { useCart } from '../../hooks/useCart';

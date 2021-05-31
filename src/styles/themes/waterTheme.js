@@ -14,7 +14,7 @@ export default {
     shape: '#fff',
     button: '#363f5f',
     buttonSecondary: '#3393CC',
-    gradient:''
+    
   },
 
   font: {
