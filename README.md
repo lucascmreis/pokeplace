@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Pokedex logo" src="./.github/pokeplaceLogo.svg" width="400px" />
+  <img alt="Pokeplace logo" src="/.github/pokeplaceLogo.svg" width="400px" />
 </p>
 
 <p align="center" fontSize="60px">
@@ -30,6 +30,8 @@ Todos os dados sobre os pokémons como nome, número, tipo, imagem e entre outra
 - [x] **Botão finalizar compra**: Botão que finaliza a compra no carrinho lateral. Após finalizar a compra, o carrinho da loja é esvaziado e reiniciado o processo de compra.
 
 - [x] **Modal de obrigado**: Ao finalizar a compra é apresentado um modal, com a mensagem de obrigado. Foi adicionado também uma funcionalidade de retorna 15% de Cashback. E uma lista que direciona para outras lojas.
+
+### Funcionalidades Extras
 
 Além das funcionalidades principais foram adicionadas outras ao projeto:
 
