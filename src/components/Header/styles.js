@@ -4,28 +4,37 @@ import styled from 'styled-components';
 export const Container = styled.header`
   background: ${props => props.theme.colors.backgroundHeader};
   font-family: ${props => props.theme.font.fontFamily };
+  display: block;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+
+ 
 
 `;
 
 export const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: 20% 80%;
-  justify-items: center;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  max-width: 1024px;
   margin: 0 auto;
-  padding: 1rem 2rem 3rem ;
-
-
+  max-width: 1024px;
+  padding: 1rem 2rem 0;
 
   a {
     display: flex;
     align-items: center;
     transition: opacity 0.2s;
+    margin-left: 2rem;
 
     h1{
       color: ${props => props.theme.colors.textTitleLight};
       margin-left: 1rem;
+      margin-right: 1rem;
+      
+    }
+    img{
+      width: 20%;
     }
 
     &:hover {
@@ -33,28 +42,30 @@ export const Wrapper = styled.div`
     }
   }
 
-  div{
-    display: flex;
+  @media screen and (max-width:475px){
+    h1{
+      font-size: 1.5rem;
+    }
+
   }
 
-  @media screen and (max-width:768px){
-      grid-template-columns: 1fr;
+  @media screen and (max-width:375px){
+    h1{
+      font-size: 1.2rem;
+    }
 
-      a{
-        margin-bottom: 2rem;
-      }
   }
 
 `;
 
 export const InputWrapper = styled.div`
   display: flex;
-  flex: 1;
-  margin: 0 5rem;
+  margin: 1rem auto;
   align-items: center;
+  justify-items: center;
+  max-width: 1024px;
+  padding: 1.5rem 3rem ;
  
-
-  
 
   input{
     border: 0;
@@ -74,10 +85,11 @@ export const Cart = styled.div`
   align-items: center;
   text-decoration: none;
   cursor: pointer;
+  margin-right: 2rem;
 
   div {
     text-align: right;
-    margin-right: 10px;
+    margin-right: 0.6rem;
 
     strong {
       display: block;
@@ -89,11 +101,51 @@ export const Cart = styled.div`
       }
     }
 
-    span {
-      font-size: 12px;
+    span  {
+      font-size: 1rem;
       color: #999;
     }
+
+    .mobile-cart{
+     visibility: hidden;
+    }
+
   }
 
+  @media screen and (max-width:475px){
+    flex-direction: row-reverse;
+    margin-right: 2rem;
+
+    div{
+      position: relative;
+    }
+
+    span.mobile-cart{
+      visibility: visible;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: ${props => props.theme.colors.secondary};
+      width: 1.2rem ;
+      height: 1.2rem ;
+      margin-left: -10px;
+      color: ${props => props.theme.colors.shape};
+      font-size: 0.8rem;
+      font-weight: 600;
+
+    }
+ 
+    .cart{
+      display: none;
+    }
+
+
+
+
+
+
+  }
 
 `;

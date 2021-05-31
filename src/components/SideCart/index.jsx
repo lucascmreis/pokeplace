@@ -25,6 +25,7 @@ export const SideCart = ({isOpen, toggle}) =>{
   const [total, setTotal] = useState([])
 
     function loadCart(){
+
       if(cart){
         const cartFormattedData = cart.map(product => ({
           ...product,

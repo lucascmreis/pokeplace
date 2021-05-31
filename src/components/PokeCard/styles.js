@@ -1,7 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom'
-
-import { darken, lighten } from 'polished';
 
 
 export const Container = styled.div`
@@ -9,7 +6,7 @@ export const Container = styled.div`
     flex-direction: column;
     background: #fff;
     border-radius: 4px;
-    padding: 20px;
+    padding: 1.5rem;
 
     transition: all 0.1s ease-in-out ;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -19,11 +16,10 @@ export const Container = styled.div`
       box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     }
     
-  
 
   img {
     align-self: center;
-    max-width: 260px;
+    max-width: 320px;
   }
 
   > strong {
@@ -75,6 +71,16 @@ export const Container = styled.div`
       font-weight: bold;
     }
   }
+
+  @media screen and (max-width: 475px){
+    width:80%;
+  }
+
+  @media screen and (max-width: 320px){
+    width:70%;
+    padding: 1.5rem;
+  }
+
 `;
 
 

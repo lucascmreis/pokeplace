@@ -1,6 +1,7 @@
 import React, {
   createContext,
   useState,
+  useEffect,
   useContext,
 } from 'react';
 
@@ -10,12 +11,21 @@ import { toast } from 'react-toastify';
  
 const CartContext = createContext({});
 
-export const CartProvider = ({ children, onOpenNewModal, onOpenDetailsModal }) => {
+export const CartProvider = ({ children, onOpenNewModal, onOpenDetailsModal }) => { 
+
+  const storageName = '@Pokeplace:cart'+ window.location.pathname
   
   const [cashBack, setCashBack] = useState(0)
+  const [localStorageCartStoreName, setLocalStorageCartStoreName] = useState(storageName)
+
+
   
+
+
   const [cart, setCart] = useState(() => {
-    const storagedCart = localStorage.getItem('@Pokeplace:cart')
+    const storagedCart = localStorage.getItem(localStorageCartStoreName)
+
+    console.log(storagedCart)
 
     if (storagedCart) {
       return JSON.parse(storagedCart);
@@ -23,6 +33,13 @@ export const CartProvider = ({ children, onOpenNewModal, onOpenDetailsModal }) =
 
     return [];
   });
+
+  useEffect(() => {
+    const storageName = '@Pokeplace:cart'+ window.location.pathname
+    setLocalStorageCartStoreName(storageName)
+
+  }, [])
+
 
   const addProduct = async (pokemonList) => {
     try {
@@ -53,7 +70,7 @@ export const CartProvider = ({ children, onOpenNewModal, onOpenDetailsModal }) =
       }
 
       setCart(updateCart)
-      localStorage.setItem('@Pokeplace:cart', JSON.stringify(updateCart))
+      localStorage.setItem(localStorageCartStoreName, JSON.stringify(updateCart))
 
 
     } catch {
@@ -70,7 +87,7 @@ export const CartProvider = ({ children, onOpenNewModal, onOpenDetailsModal }) =
       if(productIndex >=0 ) {
         updatedCart.splice(productIndex, 1)
         setCart(updatedCart)
-        localStorage.setItem('@Pokeplace:cart', JSON.stringify(updatedCart))
+        localStorage.setItem(localStorageCartStoreName, JSON.stringify(updatedCart))
       }else {
         throw Error()
       }
@@ -84,7 +101,7 @@ export const CartProvider = ({ children, onOpenNewModal, onOpenDetailsModal }) =
     try{
       const emptyCart = []
       setCart(emptyCart)
-      localStorage.setItem('@Pokeplace:cart', emptyCart)
+      localStorage.setItem(localStorageCartStoreName, emptyCart)
 
     } catch{
       toast.error('Não foi possível esvaziar o carrinho')
@@ -111,7 +128,7 @@ export const CartProvider = ({ children, onOpenNewModal, onOpenDetailsModal }) =
       if(productExists){
         productExists.amount = amount
         setCart(updatedCart)
-        localStorage.setItem('@Pokeplace:cart', JSON.stringify(updatedCart))
+        localStorage.setItem(localStorageCartStoreName, JSON.stringify(updatedCart))
       } else{
         throw Error()
       } 
@@ -135,10 +152,10 @@ export const CartProvider = ({ children, onOpenNewModal, onOpenDetailsModal }) =
     updateProductAmount, 
     removeProduct, 
     setEmptyCart,
+    setTotalCashBack,
     cart, 
     onOpenNewModal,
     onOpenDetailsModal,
-    setTotalCashBack,
     cashBack,
   }
 

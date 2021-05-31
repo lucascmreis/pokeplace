@@ -1,10 +1,14 @@
 import Modal from 'react-modal'
+import {Link} from 'react-router-dom'
 import {useCart} from '../../hooks/useCart'
 import {formatPrice} from '../../utils/formatPrice'
+
 import closeImg from '../../assets/close.svg'
+import waterImg from '../../assets/water.png'
+import ghostImg from '../../assets/ghost.png'
+import fireImg from '../../assets/fire.png'
 
-
-import {Container } from './styles'
+import {Container, LinksWrapper } from './styles'
 
 
 
@@ -31,18 +35,37 @@ export function FinishModal({isOpen, onRequestClose}){
 
         <div>
           <p>Você acaba de ganhar 15% de cashback</p>
-          <p> {formatPrice(cashBack)} </p> 
-
-          <p>Venha conhecer nossas outras lojas e ganhe até 30% de cashback na próxima compra</p>
+          <strong> Seu bônus é de {formatPrice(cashBack)} </strong> 
 
         </div>
 
-        <div>
+        <LinksWrapper>
+          <h3>Venha conhecer nossas outras lojas</h3>
           <ul>
-            <li>FireShop</li>
-            <li>GrassShop</li>
+            <li>
+              <Link  to="/fireshop" onClick={onRequestClose}>
+                <img src={fireImg} alt="Fireshop" />
+                <span>Fireshop</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/aquashop" onClick={onRequestClose}>
+                <img src={waterImg} alt="Fireshop" />
+                <span>Aquashop</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/fireshop" onClick={onRequestClose}>
+                <img src={ghostImg} alt="Fireshop" />
+                <span>GhostShop</span>
+              </Link>
+            </li>
+        
+            
           </ul>
-        </div>
+        </LinksWrapper>
 
 
       </Container> 

@@ -4,7 +4,8 @@ import { darken, lighten } from 'polished';
 export const Container = styled.div`
   position: fixed;
   z-index: 999;
-  width: 50%;
+  width: 80%;
+  max-width: 720px ;
   height: 100% ;
   background: #fff;
   display: grid;
@@ -18,9 +19,15 @@ export const Container = styled.div`
     -webkit-box-shadow: -5px 5px 21px -4px rgba(0,0,0,0.46);
     -moz-box-shadow: -5px 5px 21px -4px rgba(0,0,0,0.46);
 
-  @media screen and (max-width: 768px){
+
+  @media screen and (min-width: 1024px){
+  width: 60%;
+ 
+  }
+
+  @media screen and (max-width: 920px){
     width: 100%;
-    height: 100vh;
+    height: 100%;
   }
 
   footer {
@@ -47,7 +54,7 @@ export const Container = styled.div`
       }
     }
 
-    @media screen and (max-width: 768px){
+    @media screen and (max-width: 9208px){
       flex-direction: column-reverse;
       justify-content: center;
       margin-bottom: 1rem;
@@ -65,7 +72,7 @@ export const Container = styled.div`
 export const IconWrapper = styled.div`
   position: absolute;
   top: 1.2rem;
-  right: 1.5rem;
+  right: 3rem;
   background: transparent;
   font-size: 2rem;
   outline: none;
@@ -95,6 +102,8 @@ export const ProductTable = styled.table`
 
   tbody{
     display: block;
+    width: 100%;
+    margin: 0 auto;
     overflow-y: scroll;
     height: 50vh;
 

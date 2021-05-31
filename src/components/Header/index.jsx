@@ -7,7 +7,7 @@ import {
   Container, Wrapper, Cart, InputWrapper,
 } from './styles';
 
-const Header = ({setSearch, toggle}) => {
+const Header = ({setSearch, toggle, pageProps}) => {
   const {cart} = useCart();
   const cartSize = cart.length;
 
@@ -16,12 +16,28 @@ const Header = ({setSearch, toggle}) => {
     <Container>
       <Wrapper>
         <Link to="/">
-          <img src={waterLogo} alt="Pokeshop" />
-          <h1>AquaShop</h1>
+          <img src={pageProps.image} alt="Pokeshop" />
+          <h1> {pageProps.title} </h1>
         </Link>
 
-        <div>
-        <InputWrapper>
+        <Cart onClick={toggle}>
+          <div>
+            <strong>Meu carrinho</strong>
+
+            <span className="mobile-cart">
+              {cartSize}
+            </span>
+
+            <span className="cart" >
+              {cartSize === 1 ? `${cartSize} item` : `${cartSize} itens`}
+            </span>
+          </div>
+          <MdShoppingBasket size={36} color="#FFF" />
+        </Cart>
+       
+      </Wrapper>
+
+      <InputWrapper>
           <input 
             type="text"
             placeholder="Digite aqui um Pokemon"
@@ -29,20 +45,7 @@ const Header = ({setSearch, toggle}) => {
           />
           <MdSearch size={32} color="#ccc" />
 
-        </InputWrapper>
-
-        <Cart onClick={toggle}>
-          <div>
-            <strong>Meu carrinho</strong>
-            <span >
-              {cartSize === 1 ? `${cartSize} item` : `${cartSize} itens`}
-            </span>
-          </div>
-          <MdShoppingBasket size={36} color="#FFF" />
-        </Cart>
-        </div>
-      
-      </Wrapper>
+      </InputWrapper>
 
     </Container>
 

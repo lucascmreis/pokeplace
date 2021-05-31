@@ -16,9 +16,12 @@ export const ContentWrapper = styled.div`
   max-width: 1024px;
   justify-content: center;
   align-items: center;
-  margin: 2rem auto;
+  margin: 1rem auto;
   transition: all 0.2s;
-  
+
+  @media screen and (max-width: 475px){
+    max-width: 85%;
+  }
   
 `;
 
