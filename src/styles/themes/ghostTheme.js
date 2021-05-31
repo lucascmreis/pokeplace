@@ -18,6 +18,6 @@ export default {
   },
 
   font: {
-    fontFamily: 'Nunito'
+    fontFamily: 'Raleway, sans-serif'
   }
 }

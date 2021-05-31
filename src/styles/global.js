@@ -10,6 +10,8 @@ export const GlobalStyle = createGlobalStyle`
     --red: #e52e4d;
     --blue: #5429cc;
     --green: #33cc95;
+    --yellow: #FEEA00;
+    --gray: #06231B;
     --blue-light: #6933ff;
     --text-title: #fff;
     --text-body:  #969cb3;
@@ -41,7 +43,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body,input, textarea, button {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-weight: 400;
   }
 

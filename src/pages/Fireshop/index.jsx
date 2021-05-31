@@ -1,7 +1,7 @@
 import { Layout } from '../../components/Layout';
 
 import {ThemeProvider} from 'styled-components'
-import fireTheme from '../../styles/themes/waterTheme'
+import fireTheme from '../../styles/themes/fireTheme'
 import fireImg from '../../assets/fire.png'
 
 export default function FireShop() {

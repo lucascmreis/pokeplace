@@ -51,14 +51,14 @@ export function FinishModal({isOpen, onRequestClose}){
 
             <li>
               <Link to="/aquashop" onClick={onRequestClose}>
-                <img src={waterImg} alt="Fireshop" />
+                <img src={waterImg} alt="Aquashop" />
                 <span>Aquashop</span>
               </Link>
             </li>
 
             <li>
-              <Link to="/fireshop" onClick={onRequestClose}>
-                <img src={ghostImg} alt="Fireshop" />
+              <Link to="/ghostshop" onClick={onRequestClose}>
+                <img src={ghostImg} alt="Ghostshop" />
                 <span>GhostShop</span>
               </Link>
             </li>

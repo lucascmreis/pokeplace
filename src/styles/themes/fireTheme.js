@@ -4,20 +4,20 @@ export default {
 
   colors:{
     background: '#f0f2f5',
-    backgroundHeader:'#363f5f',
+    backgroundHeader:'#BC2C1A',
 
-    primary:'#363f5f',
-    secondary:'#3393DD',
+    primary:'#BC2C1A',
+    secondary:'#FF983F',
     textTitleLight: '#fff',
     textTitleDark: '#969cb3',
     textBody: '#969cb3',
     shape: '#fff',
-    button: '#363f5f',
-    buttonSecondary: '#3393CC',
+    button: '#BC2C1A',
+    buttonSecondary: '#FF983F',
     gradient:''
   },
 
   font: {
-    fontFamily: 'Nunito'
+    fontFamily: 'Roboto Slab, serif'
   }
 }

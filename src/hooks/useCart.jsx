@@ -19,9 +19,6 @@ export const CartProvider = ({ children, onOpenNewModal, onOpenDetailsModal }) =
   const [localStorageCartStoreName, setLocalStorageCartStoreName] = useState(storageName)
 
 
-  
-
-
   const [cart, setCart] = useState(() => {
     const storagedCart = localStorage.getItem(localStorageCartStoreName)
 
