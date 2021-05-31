@@ -57,7 +57,9 @@ Além das funcionalidades principais foram adicionadas outras ao projeto:
 
 - A estratégia utilizada foi criar um Layout de loja e realizar o consumo da API por "type" e disponibilizar para cada loja. Como se fosse especializada em um tipo de pokemon apenas. Uma vez definido a estrutura da loja, foram criados Temas, com styled-components.
 
-- Para criar uma nova loja, basta criar um novo tema e criar uma nova página com o componente Layout, passando o nome do tipo em inglês (ver nomes disponíveis na documentação da api [PokéApi](https://pokeapi.co/) ).
+- As 3 lojas estão separadas por rotas `/fireshop` | `/aquashop` | `/ghostshop`. A ideia era deixar as três lojas dentro da mesma aplicação, para facilitar a demostração. Mas cada uma tem seu proprio estado e tema.
+
+- Para criar uma nova loja, basta criar um novo tema e criar uma nova página com o componente Layout, passando o nome do tipo em inglês (e.g.`water` para pokemon de água). Ver nomes disponíveis na documentação da api [PokéApi](https://pokeapi.co/), em caso de dúvidas.
 
 ## :rocket: Tecnologias
 
