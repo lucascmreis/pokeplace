@@ -3,7 +3,7 @@
 </p>
 
 <p align="center" fontSize="60px">
-  Marketplace com Lojas de Pokemon por tipo
+  Marketplace com Lojas de Pokemon por tipo <a href="https://pokeplace.vercel.app/"><h4>(Link do App)</h4> </a>
 </p>
 
 <p align="center">
