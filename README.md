@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Pokeplace logo" src="/.github/pokeplaceLogo.svg" width="400px" />
+  <img alt="Pokeplace logo" src="./.github/pokeplaceLogo.png" width="400px" />
 </p>
 
 <p align="center" fontSize="60px">
