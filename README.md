@@ -15,7 +15,7 @@ Link para o projeto [Pokeplace](https://pokeplace.vercel.app/) hospedado na [Ver
 ## 💻 Projeto
 
 Desenvolver 3 lojas virtuais de Pokémon, sendo cada loja de um tipo diferente ( água, fogo, fantasma, etc) .
-Todos os dados sobre os pokémons como nome, número, tipo, imagem e entre outras coisas, foram disponilizadas com o uso da API REST [PokéApi](https://pokeapi.co/).
+Todos os dados sobre os pokémon como nome, número, tipo, imagem e entre outras coisas, foram disponilizadas com o uso da API REST [PokéApi](https://pokeapi.co/).
 
 ### Funcionalidades
 
@@ -29,7 +29,7 @@ Todos os dados sobre os pokémons como nome, número, tipo, imagem e entre outra
 
 - [x] **Botão finalizar compra**: Botão que finaliza a compra no carrinho lateral. Após finalizar a compra, o carrinho da loja é esvaziado e reiniciado o processo de compra.
 
-- [x] **Modal de obrigado**: Ao finalizar a compra é apresentado um modal, com a mensagem de obrigado. Foi adicionado também uma funcionalidade de retorna 15% de Cashback. E uma lista que direciona para outras lojas.
+- [x] **Modal de obrigado**: Ao finalizar a compra é apresentado um modal, com a mensagem de obrigado. Foi adicionado também uma funcionalidade que retorna 15% de Cashback. E uma lista que direciona para outras lojas.
 
 ### Funcionalidades Extras
 
@@ -80,7 +80,7 @@ Além das funcionalidades principais foram adicionadas outras ao projeto:
 Faça um clone desse repositório e acesse o diretório.
 
 ```bash
-$ git clone https://github.com/lucascmreis/pokeplace.gitt && cd pokeplace
+$ git clone https://github.com/lucascmreis/pokeplace.git && cd pokeplace
 ```
 
 ```bash
@@ -98,7 +98,7 @@ Faça o `fork` e clone o projeto a partir do seu usuário.
 
 ```bash
 # Clonando projeto
-$ git clone https://github.com/SEU-NOME-DE-USUARIO/pokedex.git
+$ git clone https://github.com/SEU-NOME-DE-USUARIO/pokeplace.git
 
 # Criando um branch
 $ git branch minha-alteracao
